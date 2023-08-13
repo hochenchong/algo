@@ -53,4 +53,30 @@ public class AddTwoNumbers {
         }
         return result;
     }
+
+    /*
+     * 使用递归的方式
+     */
+    public ListNode addTwoNumbersByRecursive(ListNode l1, ListNode l2) {
+        return addTwoNumbersByRecursive(l1, l2, 0);
+    }
+
+    private ListNode addTwoNumbersByRecursive(ListNode l1, ListNode l2, int p) {
+        if (l1 == null && l2 == null && p == 0) {
+            return null;
+        }
+        ListNode result = new ListNode();
+        if (l1 != null) {
+            p += l1.val;
+            l1 = l1.next;
+        }
+        if (l2 != null) {
+            p += l2.val;
+            l2 = l2.next;
+        }
+        result.val = p % 10;
+        p = p / 10;
+        result.next = addTwoNumbersByRecursive(l1, l2, p);
+        return result;
+    }
 }
