@@ -5,7 +5,9 @@
 #### 数组
 [704. 二分查找](./src/main/java/leetcode/array/BinarySearch.java)
 
-[1. 两数之和](./src/main/java/leetcode/TwoSum.java)
+[27. 移除元素](./src/main/java/leetcode/array/RemoveElement.java)
+
+[1. 两数之和](./src/main/java/leetcode/array/TwoSum.java)
 
 
 #### 链表
