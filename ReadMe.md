@@ -7,6 +7,8 @@
 
 [27. 移除元素](./src/main/java/leetcode/array/RemoveElement.java)
 
+[977. 有序数组的平方](./src/main/java/leetcode/array/SquaresOfASortedArray.java)
+
 [1. 两数之和](./src/main/java/leetcode/array/TwoSum.java)
 
 
