@@ -21,11 +21,33 @@ public class MinimumSizeSubArraySum {
     大于等于 target
     长度最小的子数组
     返回其长度，不存在则返回 0
+     */
 
-    暴力解法：双层 for 循环遍历
+    /*
+    滑动窗口方式，不断调节窗口
+    每个元素，只被操作 2 次，所以是 O(2n)，也就是 O(n)
      */
     public int minSubArrayLen(int target, int[] nums) {
-        int minLen = 0;
+        int result = Integer.MAX_VALUE;
+        int left = 0;
+        int sum = 0;
+        for (int r = 0; r < nums.length; r++) {
+            sum += nums[r];
+            while (sum >= target) {
+                if (result > (r - left + 1)) {
+                    result = r - left + 1;
+                }
+                sum -= nums[left++];
+            }
+        }
+        return result == Integer.MAX_VALUE ? 0 : result;
+    }
+
+    /*
+    暴力解法：双层 for 循环遍历。O(n^2)
+     */
+    public int minSubArrayLen1(int target, int[] nums) {
+        int minLen = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
             int sum = 0;
             // 从 i 开始寻找总和大于 target
@@ -33,9 +55,7 @@ public class MinimumSizeSubArraySum {
                 sum += nums[j];
                 // 满足条件跳出循环，下一位开始寻找
                 if (sum >= target) {
-                    if (minLen == 0) {
-                        minLen = j - i + 1;
-                    } else if (j - i + 1 < minLen) {
+                    if (j - i + 1 < minLen) {
                         minLen = j - i + 1;
                     }
                     // 如果长度 1，那就是最小的了
@@ -46,6 +66,6 @@ public class MinimumSizeSubArraySum {
                 }
             }
         }
-        return minLen;
+        return minLen == Integer.MAX_VALUE ? 0 : minLen;
     }
 }
